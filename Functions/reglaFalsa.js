@@ -1,8 +1,8 @@
 const mathjs = require('mathjs')
 
-module.exports = (fx, xa, xb, tolerance, nMax) => {
-    fa = mathjs.evaluate(fx, { x: xa });
-    fb = mathjs.evaluate(fx, { x: xb });
+module.exports = (f, xa, xb, tolerance, nMax) => {
+    fa = mathjs.evaluate(f, { x: xa });
+    fb = mathjs.evaluate(f, { x: xb });
     const iterations = [];
     if (fa === 0) {
         return {
@@ -16,18 +16,18 @@ module.exports = (fx, xa, xb, tolerance, nMax) => {
         }
     } else if (fa * fb < 0) {
         xc = xa - ((fa*(xb-xa))/(fb-fa));
-        fc = mathjs.evaluate(fx, { x: xc })
+        fc = mathjs.evaluate(f, { x: xc })
         counter = 0;
         iterations.push({ counter, xa, xb, xc, fa, fb, fc });
         error = tolerance + 10;
         while (error > tolerance && (fc !== 0) && (counter < nMax)) {
             xa = fa * fc < 0 ? xa : xc;
             xb = fa * fc < 0 ? xc : xb;
-            fa = mathjs.evaluate(fx,{x:xa});
-            fb = mathjs.evaluate(fx,{x:xb});
+            fa = mathjs.evaluate(f,{x:xa});
+            fb = mathjs.evaluate(f,{x:xb});
             xaux = xc;
             xc = xa - ((fa*(xb-xa))/(fb-fa));
-            fc = mathjs.evaluate(fx,{x:xc});
+            fc = mathjs.evaluate(f,{x:xc});
             error = Math.abs(xc-xaux);
             iterations.push({ counter, xa, xb, xc, fa, fb, fc, error});
             counter++;

@@ -1,19 +1,19 @@
 const mathjs = require('mathjs')
 
-module.exports = (fx, x0, deltax, nMax) => {
+module.exports = (f, x0, deltax, nMax) => {
     const iterations = []
     counter = 0;
     xPrev = x0;
     xCurrent = xPrev + deltax;
-    fPrev = mathjs.evaluate(fx, { x: xPrev });
-    fCurrent = mathjs.evaluate(fx, { x: xCurrent });
+    fPrev = mathjs.evaluate(f, { x: xPrev });
+    fCurrent = mathjs.evaluate(f, { x: xCurrent });
     iterations.push({ counter, xPrev, xCurrent, fPrev, fCurrent });
 
     while ((fPrev * fCurrent >= 0) && counter < nMax) {
         xPrev = xCurrent;
         xCurrent = xPrev + deltax;
-        fPrev = mathjs.evaluate(fx, { x: xPrev });
-        fCurrent = mathjs.evaluate(fx, { x: xCurrent });
+        fPrev = mathjs.evaluate(f, { x: xPrev });
+        fCurrent = mathjs.evaluate(f, { x: xCurrent });
         counter++;
         iterations.push({ counter, xPrev, xCurrent, fPrev, fCurrent });
     }

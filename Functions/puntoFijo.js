@@ -1,8 +1,8 @@
 const mathjs = require('mathjs')
 
-module.exports = (fx,gx,x0,tolerance,nMax) => {
+module.exports = (f,g,x0,tolerance,nMax) => {
     const iterations = []
-    fxi = mathjs.evaluate(fx,{x:x0});
+    fxi = mathjs.evaluate(f,{x:x0});
     if (fxi === 0) {
         return { state: 'Success', root: x0 }
     }else {
@@ -12,8 +12,8 @@ module.exports = (fx,gx,x0,tolerance,nMax) => {
         error = tolerance + 1;
         while(fxi !== 0 && error > tolerance && counter < nMax){
             xaux = xi;
-            xi = mathjs.evaluate(gx,{x:xaux});
-            fx = mathjs.evaluate(fx,{x:xi});
+            xi = mathjs.evaluate(g,{x:xaux});
+            fxi = mathjs.evaluate(f,{x:xi});
             error = Math.abs(xi-xaux);
             counter++;
             iterations.push({counter,xi,fxi,error});
