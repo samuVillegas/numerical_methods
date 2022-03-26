@@ -1,3 +1,8 @@
+/*
+Documentation: https://mathjs.org/docs/reference/functions.html
+*/
+
+
 // F(x) = 0
 const busquedasInc = require('./Functions/busquedasInc')
 const biseccion = require('./Functions/biseccion')
@@ -15,3 +20,4 @@ const gausPivoteoTotal = require('./Matrixes/gausPivoteoTotal')
 
 //Main
 
+console.table(busquedasInc('log(x)-2',7,0.1,10).iterations)
