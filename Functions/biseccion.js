@@ -21,8 +21,8 @@ module.exports = (fx, xa, xb, tolerance, nMax) => {
         iterations.push({ counter, xa, xb, xc, fa, fb, fc });
         error = tolerance + 10;
         while (error > tolerance && (fc !== 0) && (counter < nMax)) {
-            xa = fa * fb < 0 ? xa : xc;
-            xb = fa * fb < 0 ? xc : xb;
+            xa = fa * fc < 0 ? xa : xc;
+            xb = fa * fc < 0 ? xc : xb;
             fa = mathjs.evaluate(fx,{x:xa});
             fb = mathjs.evaluate(fx,{x:xb});
             xaux = xc;
