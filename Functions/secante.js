@@ -26,7 +26,7 @@ module.exports = (f,x0,x1,tolerance,nMax) => {
         }
 
         if(fx1 === 0) return {state: 'Success', iterations, root: x1}
-        if(error <= tolerance) return { state: 'Success', iterations, approximation: xi}
+        if(error <= tolerance) return { state: 'Success', iterations, approximation: x1}
         if(det === 0) return {state: 'Error', iterations, message: `${x1} is a possible multiple root`}
         return { state: 'Error', iterations, message: 'The method fails with the maximum number of iterations given'}
     }
