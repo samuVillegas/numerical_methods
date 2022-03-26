@@ -20,4 +20,5 @@ const gausPivoteoTotal = require('./Matrixes/gausPivoteoTotal')
 
 //Main
 
-console.table(busquedasInc('log(x)-2',7,0.1,10).iterations)
+//console.table(busquedasInc('e^(3*x-12)+x*cos(3x)-x^2+1',-10,1,10).iterations)
+console.table(biseccion('log((sin(x)^2 + 1)) - 1/2',0,1,10e-7,100).approximation)
