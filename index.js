@@ -31,4 +31,5 @@ const gausPivoteoTotal = require('./Matrixes/gausPivoteoTotal')
 // console.table(raicesMultiples('e^x-x-1','e^x-1','e^x',1,10e-7,100).iterations)
 
 
-gausPivoteoParcial([[14,6,-2,3],[3,15,2,-5],[-7,4,-23,2],[1,-3,-2,16]],[[12],[32],[-24],[14]],4)
+//console.log(gausSimple([[14,6,-2,3],[3,15,2,-5],[-7,4,-23,2],[1,-3,-2,16]],[[12],[32],[-24],[14]],4).x)
+//console.log(gausPivoteoParcial([[-7,2,-3,4],[5,-1,14,-1],[1,9,-7,5],[-12,13,-8,-4]],[[-12],[13],[31],[-32]],4).x)
