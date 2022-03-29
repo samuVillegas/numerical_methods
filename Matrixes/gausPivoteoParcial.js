@@ -6,7 +6,7 @@ const partialPivot = (m,n,k) => {
     pos = -1;
     for(let i = k;i<n;i++){
         if (Math.abs(list[i])> major){
-            major = list[i];
+            major = Math.abs(list[i]);
             pos = i;
         }
     }
