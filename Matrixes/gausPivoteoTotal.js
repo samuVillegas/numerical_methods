@@ -13,28 +13,43 @@ const totalPivot = (m, n, k) => {
             }
         }
     }
-    const temp = m[k];
-    m[k] = m[posRow];
-    m[posRow] = temp;
-    m = mathjs.transpose(m);
-    const temp2 = m[k];
-    m[k] = m[posColumn];
-    m[posColumn] = temp2;
-
-    m = mathjs.transpose(m);
-    return {posColumn,matriz:m};
+    if(posRow !== k){
+        const temp = m[k];
+        m[k] = m[posRow];
+        m[posRow] = temp;
+    }
+    if(posColumn !== k){
+        m = mathjs.transpose(m);
+        const temp2 = m[k];
+        m[k] = m[posColumn];
+        m[posColumn] = temp2;
+        m = mathjs.transpose(m);
+    }
+    
+    return { posColumn, matriz: m };
 }
 
 
+const generateMark = (n) => {
+    const markResult = new Array(n)
+    for (i = 0; i < n; i++){
+        markResult[i] = i;
+    } 
+    return markResult;
+}
 
 const upperTriangular = (A, b, n) => {
     const stages = [];
-    const marks = new Array(n)
+    const marks = generateMark(n);
     m = mathjs.concat(A, b);
     for (let i = 0; i < n - 1; i++) {
-        const {posColumn,matriz} = totalPivot(m, n, i);
-        marks[i] = posColumn;
-        m=[...matriz];
+        const { posColumn, matriz } = totalPivot(m, n, i);
+
+        markAux = marks[i]
+        marks[i] = marks[posColumn]
+        marks[posColumn] = markAux;
+
+        m = [...matriz];
         if (m[i][i] === 0) return { state: 'Error', message: 'A 0 was found on the diagonal' };
         for (let j = i + 1; j < n; j++) {
             if (m[j][i] !== 0) {
@@ -60,10 +75,23 @@ const sustitution = (m, n) => {
     return results;
 }
 
+
+const orderResult = (x, marks) => {
+    const result = new Array(x.length)
+    marks.map((element,index)=>{
+        result[element] = x[index]
+    })
+    return result;
+}
+
 module.exports = (A, b, n) => {
     const { m, stages, marks, state, message } = upperTriangular(A, b, n)
+
     if (state === 'Error') {
         return { state, message }
     }
-    return { state: 'Success', stages, x: sustitution(m, n), marks}
+    xprev = sustitution(m,n);
+    x = orderResult(xprev,marks)
+
+    return { state: 'Success', stages, x }
 }
