@@ -12,7 +12,7 @@ const newton = require('./Functions/newton')
 const secante = require('./Functions/secante')
 const raicesMultiples = require('./Functions/raicesMultiples')
 const steffensen = require('./Functions/steffensen')
-
+const aitken = require('./Functions/aitken')
 
 // Ax=b
 const gausSimple = require('./Matrixes/gausSimple')
@@ -31,6 +31,7 @@ const gausPivoteoTotal = require('./Matrixes/gausPivoteoTotal')
 // console.table(secante('log((sin(x)^2)+ 1)-1/2',0.5,1,10e-7,100).iterations)
 // console.table(raicesMultiples('e^x-x-1','e^x-1','e^x',1,10e-7,100).iterations)
 console.table(steffensen('x^3 + 4x^2 -10','sqrt(10/(x+4))',1.5,10e-7,100).iterations)
+console.table(aitken('e^(-x)-x','e^(-x)',0,10e-7,100).iterations)
 
 
 //console.log(gausSimple([[14,6,-2,3],[3,15,2,-5],[-7,4,-23,2],[1,-3,-2,16]],[[12],[32],[-24],[14]],4).x)
