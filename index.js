@@ -39,75 +39,104 @@ const gausPivoteoTotal = require('./Matrixes/gausPivoteoTotal')
 //console.log(gausPivoteoTotal([[-7,2,-3,4],[5,-1,14,-1],[1,9,-7,13],[-12,13,-8,-4]],[[-12],[13],[31],[-32]],4).x)
 
 
-console.log('..........Quiz1......................')
+// console.log('..........Quiz1......................')
 
-A = [[0,2,3],[7,-1,20],[1,-14,8]];
-B = [[1,-4,9],[7,5,0],[1,8,120]];
-b = [[1],[1],[1]];
-c = [[-1],[0],[1]];
-d = [[4],[-2],[8]];
+// A = [[0,2,3],[7,-1,20],[1,-14,8]];
+// B = [[1,-4,9],[7,5,0],[1,8,120]];
+// b = [[1],[1],[1]];
+// c = [[-1],[0],[1]];
+// d = [[4],[-2],[8]];
 
-console.log('..........Punto 1......................')
-console.table(mathjs.subtract(mathjs.multiply(A,mathjs.transpose(B)),mathjs.multiply(2,A)))
-console.log(mathjs.det(A))
-console.log('..........Punto 2......................')
-res1 = gausSimple(A,b,3);
-if(res1.state !== 'Error'){
-    console.table(res1.iterations)
-    console.table(res1.x)
-}else {
-    console.log(res1.message)
-}
-console.log('..........Punto 3......................')
-res2 = gausPivoteoParcial(A,c,3);
-if(res2.state !== 'Error'){
-    res2.stages.map(element => console.table(element))
-    console.table(res2.x)
-}else {
-    console.log(res2.message)
-}
-console.log('..........Punto 4......................')
-res3 = gausPivoteoTotal(A,d,3);
-if(res3.state !== 'Error'){
-    res3.stages.map(element => console.table(element))
-    console.table(res3.x)
-}else {
-    console.log(res3.message)
-}
+// console.log('..........Punto 1......................')
+// console.table(mathjs.subtract(mathjs.multiply(A,mathjs.transpose(B)),mathjs.multiply(2,A)))
+// console.log(mathjs.det(A))
+// console.log('..........Punto 2......................')
+// res1 = gausSimple(A,b,3);
+// if(res1.state !== 'Error'){
+//     console.table(res1.iterations)
+//     console.table(res1.x)
+// }else {
+//     console.log(res1.message)
+// }
+// console.log('..........Punto 3......................')
+// res2 = gausPivoteoParcial(A,c,3);
+// if(res2.state !== 'Error'){
+//     res2.stages.map(element => console.table(element))
+//     console.table(res2.x)
+// }else {
+//     console.log(res2.message)
+// }
+// console.log('..........Punto 4......................')
+// res3 = gausPivoteoTotal(A,d,3);
+// if(res3.state !== 'Error'){
+//     res3.stages.map(element => console.table(element))
+//     console.table(res3.x)
+// }else {
+//     console.log(res3.message)
+// }
 
-console.log('..........Quiz 2......................')
-
-
-C = [[10,20,-1,8],[1,1,2,0],[17,-14,8,20],[1,4,2,0]];
-e = [[1],[1],[1],[1]];
-
-console.log('..........Punto 1......................')
-res4 = gausSimple(C,e,4);
-if(res4.state !== 'Error'){
-    res4.stages.map(element => console.table(element))
-    console.table(res4.x)
-}else {
-    console.log(res4.message)
-}
-
-console.log('..........Punto 2......................')
-res5 = gausPivoteoParcial(C,e,4);
-if(res5.state !== 'Error'){
-    res5.stages.map(element => console.table(element))
-    console.table(res5.x)
-}else {
-    console.log(res5.message)
-}
-
-console.log('..........Punto 3......................')
-res6 = gausPivoteoTotal(C,e,4);
-if(res6.state !== 'Error'){
-    res6.stages.map(element => console.table(element))
-    console.table(res6.x)
-}else {
-    console.log(res6.message)
-}
+// console.log('..........Quiz 2......................')
 
 
+// C = [[10,20,-1,8],[1,1,2,0],[17,-14,8,20],[1,4,2,0]];
+// e = [[1],[1],[1],[1]];
+
+// console.log('..........Punto 1......................')
+// res4 = gausSimple(C,e,4);
+// if(res4.state !== 'Error'){
+//     res4.stages.map(element => console.table(element))
+//     console.table(res4.x)
+// }else {
+//     console.log(res4.message)
+// }
+
+// console.log('..........Punto 2......................')
+// res5 = gausPivoteoParcial(C,e,4);
+// if(res5.state !== 'Error'){
+//     res5.stages.map(element => console.table(element))
+//     console.table(res5.x)
+// }else {
+//     console.log(res5.message)
+// }
+
+// console.log('..........Punto 3......................')
+// res6 = gausPivoteoTotal(C,e,4);
+// if(res6.state !== 'Error'){
+//     res6.stages.map(element => console.table(element))
+//     console.table(res6.x)
+// }else {
+//     console.log(res6.message)
+// }
 
 
+// console.log('..................Quiz real..........')
+
+// A = [[10,20,-60.8319,8],[1,1,-2.1416,0],[17,-14,40.9823,20],[1,4,-12.5664,1]];
+// b = [[1],[1],[1],[1]];
+
+// console.log('..................Punto 1..........')
+// res1 = gausSimple(A,b,4);
+// if(res1.state !== 'Error'){
+//     res1.stages.map(element => console.table(element))
+//     console.table(res1.x)
+// }else {
+//     console.log(res1.message)
+// }
+
+// console.log('..................Punto 2..........')
+// res2 = gausPivoteoParcial(A,b,4);
+// if(res2.state !== 'Error'){
+//     res2.stages.map(element => console.table(element))
+//     console.table(res2.x)
+// }else {
+//     console.log(res2.message)
+// }
+
+// console.log('..................Punto 3..........')
+// res3 = gausPivoteoTotal(A,b,4);
+// if(res3.state !== 'Error'){
+//     res3.stages.map(element => console.table(element))
+//     console.table(res3.x)
+// }else {
+//     console.log(res3.message)
+// }
