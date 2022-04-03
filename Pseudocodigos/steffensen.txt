@@ -1,0 +1,27 @@
+FUNCTION steffensen(f,g,x0,tolerance,nMax)
+    x1 <- g(x0)
+    x2 <- g(x1)
+    xi <- x0 - ((x1-x0)^2)/(x2-2*x1+x0)
+    fxi <- f(xi)
+    error <- tolerance + 1
+    counter <- 0
+
+    WHILE fxi != 0 AND error > tolerance AND counter < nMax DO
+        x0 <- xi
+        x1 <- g(x0)
+        x2 <- g(x1)
+        xiAux <- xi
+        xi <- x0 - ((x1-x0)^2)/(x2-2*x1+x0)
+        fxi <- f(xi)
+        error <- ABS(xi-xiAux)
+        counter <- counter + 1
+    END WHILE
+
+	IF fxi == 0 
+        PRINT('A root has been found and it is: '+ xi)
+    ELSE IF error <= tolerance
+        PRINT('One approach has been found and it is: '+ xi)
+    ELSE 
+        PRINT('The method fails with the maximum number of iterations given')
+    END IF
+END function
