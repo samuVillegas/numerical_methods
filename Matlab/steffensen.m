@@ -23,9 +23,9 @@ function [] = steffensen(f,g,x0,tolerance,nMax)
     disp(iterations)
 
     if fxi == 0 
-        disp(['Se ha encontrado la raiz y es: ', num2str(xi,12)])
+        disp(['The root has been found and it is: ', num2str(xi,12)])
     elseif error <= tolerance
-        disp(['Se ha encontrado una aproximación y es: ', num2str(xi,12)])
+        disp(['An approximation has been found and is: ', num2str(xi,12)])
     else 
         disp('The method fails with the maximum number of iterations given')
     end

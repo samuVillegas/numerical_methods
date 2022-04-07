@@ -42,6 +42,7 @@ const upperTriangular = (A, b, n) => {
     const stages = [];
     const marks = generateMark(n);
     m = mathjs.concat(A, b);
+    stages.push([...m])
     for (let i = 0; i < n - 1; i++) {
         const { posColumn, matriz } = totalPivot(m, n, i);
 

@@ -2,13 +2,14 @@ const mathjs = require('mathjs')
 
 module.exports = (f,f1,x0,tolerance,nMax) => {
     const iterations = []
+    xi = x0
     fxi = mathjs.evaluate(f,{x:x0});
     if (fxi === 0) {
         return { state: 'Success', root: x0 }
     }else{
         counter = 0;
         f1xi = mathjs.evaluate(f1,{x:x0});
-        iterations.push({counter,xi,fxi,f1xi});
+        iterations.push({iter:counter,xi:xi.toFixed(10),fxi:fxi.toExponential(1)});
         error = tolerance + 1;
 
         while(fxi !== 0 && error>tolerance && counter < nMax && f1xi !== 0){
@@ -18,7 +19,7 @@ module.exports = (f,f1,x0,tolerance,nMax) => {
             f1xi = mathjs.evaluate(f1,{x:xi});
             error = Math.abs(xi-xiaux);
             counter++;
-            iterations.push({counter,xi,fxi,f1xi,error});
+            iterations.push({iter:counter,xi:xi.toFixed(10),fxi:fxi.toExponential(1),error:error.toExponential(1)});
         }
 
         if(fxi === 0) return {state: 'Success', iterations, root: xi}

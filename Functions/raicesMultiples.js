@@ -11,7 +11,7 @@ module.exports = (f,f1,f2,x0,tolerance,nMax) => {
         f2xi = mathjs.evaluate(f2,{x:xi});
         error = tolerance + 1;
         det = (Math.pow(f1xi,2))-(fxi*f2xi);
-        iterations.push({counter,xi,fxi,f1xi,f2xi});
+        iterations.push({iter: counter,xi:xi.toFixed(10),fxi:fxi.toExponential(1)});
         while(fxi !== 0 && error > tolerance && counter < nMax && det !== 0){
             xiaux = xi;
             xi = xi - ((fxi*f1xi)/((Math.pow(f1xi,2))-(fxi*f2xi)));
@@ -21,7 +21,7 @@ module.exports = (f,f1,f2,x0,tolerance,nMax) => {
             error = Math.abs(xi-xiaux);
             det = (Math.pow(f1xi,2))-(fxi*f2xi);
             counter++;
-            iterations.push({counter,xi,fxi,f1xi,f2xi,error});
+            iterations.push({iter: counter,xi:xi.toFixed(10),fxi:fxi.toExponential(1), error: error.toExponential(1)});
         }
 
         if(fxi === 0) return {state: 'Success', iterations, root: xi}

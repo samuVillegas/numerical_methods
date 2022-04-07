@@ -9,9 +9,9 @@ module.exports = (f,x0,x1,tolerance,nMax) => {
     }else if (fx1 === 0) {
         return { state: 'Success', root: x1}
     }else{
-        iterations.push({counter:0,xi:x0,fxi:fx0})
-        iterations.push({counter:1,xi:x1,fxi:fx1})
-        counter = 1;
+        counter = 0;
+        iterations.push({counter:counter++,xi:x0.toFixed(10),fxi:fx0.toExponential(1)})
+        iterations.push({counter:counter,xi:x1.toFixed(10),fxi:fx1.toExponential(1)})
         error = tolerance + 1;
         det = fx1 - fx0;
         while(fx1 !== 0 && error > tolerance && counter < nMax && det !== 0){
@@ -22,7 +22,7 @@ module.exports = (f,x0,x1,tolerance,nMax) => {
             fx1 = mathjs.evaluate(f,{x:x1});
             error = Math.abs(x1-x0);
             counter++;
-            iterations.push({counter,xi:x1,fxi:fx1,error})
+            iterations.push({counter,xi:x1.toFixed(10),fxi:fx1.toExponential(1),error: error.toExponential(1)})
         }
 
         if(fx1 === 0) return {state: 'Success', iterations, root: x1}

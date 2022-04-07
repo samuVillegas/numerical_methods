@@ -26,9 +26,9 @@ function [x] = raicesMul(f,f1,f2,x0,tolerance,nMax)
         disp(iterations)
 
         if fxi == 0 
-            disp(['Se ha encontrado la raiz y es: ', num2str(xi,12)])
+            disp(['The root has been found and it is: ', num2str(xi,12)])
         elseif error <= tolerance
-            disp(['Se ha encontrado una aproximación y es: ', num2str(xi,12)])
+            disp(['An approximation has been found and is: ', num2str(xi,12)])
         elseif det == 0
             disp('Error during method execution')
         else 

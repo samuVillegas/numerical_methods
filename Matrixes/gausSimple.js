@@ -3,6 +3,7 @@ const mathjs = require('mathjs')
 const upperTriangular = (A, b, n) => {
     const stages = [];
     m = mathjs.concat(A, b);
+    stages.push([...m])
     for (let i = 0; i < n - 1; i++) {
         if (m[i][i] === 0) return { state: 'Error', message: 'A 0 was found on the diagonal' };
         for (let j = i + 1; j < n; j++) {
